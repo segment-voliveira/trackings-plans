@@ -234,33 +234,73 @@ function splitFile(filePath) {
 }
 
 // Fetch the updated tracking plan rules with pagination
+// async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = []) {
+//   try {
+//     let requestUrl = `${apiUrl}?count=${paginationCount}`;
+//     if (cursor) {
+//       requestUrl += `&cursor=${cursor}`;
+//     }
+
+//     const response = await axios.get(requestUrl, {
+//       headers: {
+//         'Authorization': `Bearer ${apiKey}`,
+//         'Content-Type': 'application/json'
+//       },
+//     });
+
+//     const rules = response.data.data.rules || [];
+//     accumulatedRules = accumulatedRules.concat(rules);
+
+//     if (response.data.data.pagination && response.data.data.pagination.next) {
+//       return await fetchUpdatedTrackingPlanRules(response.data.data.pagination.next, accumulatedRules);
+//     } else {
+//       return accumulatedRules;
+//     }
+//   } catch (error) {
+//     console.error('❌ Error fetching rules:', error.response?.data || error.message);
+//     return accumulatedRules;
+//   }
+// }
 async function fetchUpdatedTrackingPlanRules(cursor = null, accumulatedRules = []) {
   try {
-    let requestUrl = `${apiUrl}?count=${paginationCount}`;
-    if (cursor) {
-      requestUrl += `&cursor=${cursor}`;
-    }
+      const params = new URLSearchParams({
+          'pagination[count]': paginationCount.toString(),
+      });
 
-    const response = await axios.get(requestUrl, {
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-    });
+      if (cursor) {
+          params.append('pagination[cursor]', cursor);
+      }
 
-    const rules = response.data.data.rules || [];
-    accumulatedRules = accumulatedRules.concat(rules);
+      const requestUrl = `${apiUrl}?${params.toString()}`;
+      console.log(`🔍 Fetching from URL: ${requestUrl}`);
 
-    if (response.data.data.pagination && response.data.data.pagination.next) {
-      return await fetchUpdatedTrackingPlanRules(response.data.data.pagination.next, accumulatedRules);
-    } else {
-      return accumulatedRules;
-    }
+      const response = await axios.get(requestUrl, {
+          headers: {
+              'Authorization': `Bearer ${apiKey}`,
+              'Content-Type': 'application/json',
+              'Cache-Control': 'no-cache'
+          },
+      });
+
+      const { rules = [], pagination } = response.data.data;
+      accumulatedRules.push(...rules);
+
+      console.log(`✅ Fetched ${rules.length} rules. Total accumulated: ${accumulatedRules.length}`);
+      console.log(`📖 Pagination details: current: ${pagination?.current}, next: ${pagination?.next}`);
+
+      if (pagination?.next) {
+          // Recursively fetch the next page using the cursor
+          return await fetchUpdatedTrackingPlanRules(pagination.next, accumulatedRules);
+      } else {
+          console.log('🎉 Finished fetching all rules.');
+          return accumulatedRules;
+      }
   } catch (error) {
-    console.error('❌ Error fetching rules:', error.response?.data || error.message);
-    return accumulatedRules;
+      console.error('❌ Error fetching rules:', error.response?.data || error.message);
+      return accumulatedRules;
   }
 }
+
 
 // Main function
 async function main() {
