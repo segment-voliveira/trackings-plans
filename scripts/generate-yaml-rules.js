@@ -75,6 +75,10 @@ function generateYAMLFiles() {
     const fileName = `${rule.key.replace(/ /g, '_')}.yml`;
     const filePath = path.join(saveDir, fileName);
 
+    if (!fs.existsSync(filePath)) {
+      fs.mkdirSync(filePath, { recursive: true });
+    } 
+
     try {
       fs.writeFileSync(filePath, yamlContent);
       console.log(`Generated YAML file: ${filePath}`);
