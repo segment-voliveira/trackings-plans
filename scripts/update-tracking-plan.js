@@ -15,9 +15,14 @@ console.log('API URL:', apiUrl);
 console.log('Tracking Plan ID:', trackingPlanId);
 
 // Function to get the list of changed files in the latest commit
+// function getChangedFiles(directory) {
+//   const changedFiles = execSync('git diff --name-only HEAD^ HEAD').toString().split('\n');
+//   return changedFiles.filter(file => file.startsWith(directory) && file.endsWith('.yml'));
+// }
+
 function getChangedFiles(directory) {
-  const changedFiles = execSync('git diff --name-only HEAD^ HEAD').toString().split('\n');
-  return changedFiles.filter(file => file.startsWith(directory) && file.endsWith('.yml'));
+  const files = execSync('git diff --name-only HEAD^ HEAD').toString().split('\n');
+  return files.filter(file => file.startsWith(directory) && file.endsWith('.yml'));
 }
 
 // Function to load YAML files from an array of file paths

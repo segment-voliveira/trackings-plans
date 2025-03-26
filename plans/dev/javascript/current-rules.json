@@ -69,7 +69,7 @@
                 "description": "this is the first name",
                 "type": [
                   "string",
-                  "null"
+                  null
                 ]
               }
             },
@@ -83,7 +83,7 @@
         ]
       },
       "createdAt": "2024-09-06T17:05:15.000Z",
-      "updatedAt": "2025-03-19T23:05:03.000Z",
+      "updatedAt": "2025-03-26T18:15:00.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -275,7 +275,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "Obj Prop 2 description",
+        "description": "Obj Prop 2",
         "properties": {
           "context": {
             "type": "object"
@@ -291,7 +291,10 @@
                 "properties": {
                   "int1": {
                     "description": "this should be a new property",
-                    "type": "number"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   },
                   "string": {
                     "description": "this is a required property in an object new descriotion",
@@ -321,7 +324,7 @@
         ]
       },
       "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-14T21:20:25.000Z",
+      "updatedAt": "2025-03-26T18:10:41.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
