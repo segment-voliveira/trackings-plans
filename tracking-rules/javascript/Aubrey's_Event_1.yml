@@ -8,5 +8,7 @@ rules:
     properties:
       first_name:
         description: this is the first name
-        type: string
+        type: 
+          - string
+          - null
         required: true
