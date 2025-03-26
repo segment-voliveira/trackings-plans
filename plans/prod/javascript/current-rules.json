@@ -23,12 +23,12 @@
             "properties": {
               "prop2": {
                 "description": "this is a single property",
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
-              "prop3": {
-                "description": "this is a single property",
-                "type": "string"
-              }
+              "prop3": {}
             },
             "required": [
               "prop2",
@@ -41,7 +41,7 @@
         ]
       },
       "createdAt": "2024-09-18T18:56:17.000Z",
-      "updatedAt": "2025-02-18T23:33:43.000Z",
+      "updatedAt": "2025-03-19T18:33:52.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {

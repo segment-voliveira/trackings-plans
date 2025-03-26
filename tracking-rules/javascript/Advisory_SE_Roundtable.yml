@@ -8,9 +8,9 @@ rules:
     properties:
       prop2:
         description: this is a single property
-        type: string
+        type:
+          - string
+          - 'null'
         required: true
       prop3:
-        description: this is a single property
-        type: string
         required: true

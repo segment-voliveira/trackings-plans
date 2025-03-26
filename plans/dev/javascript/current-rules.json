@@ -67,7 +67,10 @@
             "properties": {
               "first_name": {
                 "description": "this is the first name",
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               }
             },
             "required": [
@@ -80,7 +83,7 @@
         ]
       },
       "createdAt": "2024-09-06T17:05:15.000Z",
-      "updatedAt": "2025-02-19T19:07:05.000Z",
+      "updatedAt": "2025-03-19T23:05:03.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {

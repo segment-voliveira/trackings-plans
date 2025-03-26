@@ -13,14 +13,14 @@ Advisory SE Roundtab
 
 | **Name** | `Type` | Description | Required? |
 | :--- | :--- | :--- | :--- |
-| **prop2** | `string` | this is a single property | ✅ |
-| **prop3** | `string` | this is a single property | ✅ |
+| **prop2** | `string,null` | this is a single property | ✅ |
+| **prop3** | `unknown` | No description | ✅ |
 #### **JS**
 
 ```javascript
 analytics.track("Advisory SE Roundtable", {
-  "prop2": "<<type: string, required: true>>",
-  "prop3": "<<type: string, required: true>>"
+  "prop2": "<<type: string,null, required: true>>",
+  "prop3": "<<type: unknown, required: true>>"
 })
 ```
 
