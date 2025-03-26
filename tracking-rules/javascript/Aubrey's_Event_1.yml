@@ -10,5 +10,5 @@ rules:
         description: this is the first name
         type: 
           - string
-          - null
+          - 'null'
         required: true
