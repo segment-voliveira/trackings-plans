@@ -41,12 +41,12 @@ Aubrey's Event 1
 
 | **Name** | `Type` | Description | Required? |
 | :--- | :--- | :--- | :--- |
-| **first_name** | `string` | this is the first name | ✅ |
+| **first_name** | `string,` | this is the first name | ✅ |
 #### **JS**
 
 ```javascript
 analytics.track("Aubrey's Event 1", {
-  "first_name": "<<type: string, required: true>>"
+  "first_name": "<<type: string,, required: true>>"
 })
 ```
 
@@ -173,13 +173,13 @@ analytics.track("Obj Prop 10", {
 
 #### **Description**
 
-Obj Prop 2 description
+Obj Prop 2
 #### **Properties**
 
 | **Name** | `Type` | Description | Required? |
 | :--- | :--- | :--- | :--- |
 | **object** | `object` | this is a single property | ✅ |
-| **object.int1** | `number` | this should be a new property | ❌ |
+| **object.int1** | `number,null` | this should be a new property | ❌ |
 | **object.string** | `string` | this is a required property in an object new descriotion | ❌ |
 | **object2** | `object` | this is a single property | ❌ |
 | **object2.string** | `string` | this is a required sub-property in an object dsfa | ❌ |
@@ -188,7 +188,7 @@ Obj Prop 2 description
 ```javascript
 analytics.track("Obj Prop 2", {
   "object": {
-    "int1": "<<type: number, required: false>>",
+    "int1": "<<type: number,null, required: false>>",
     "string": "<<type: string, required: false>>"
   },
   "object2": {
