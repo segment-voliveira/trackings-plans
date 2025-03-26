@@ -11,7 +11,9 @@ rules:
         properties:
           int1:
             description: this should be a new property
-            type: number
+            type: 
+              - number
+              - 'null'
           string:
             description: this is a required property in an object new descriotion
             type: string
