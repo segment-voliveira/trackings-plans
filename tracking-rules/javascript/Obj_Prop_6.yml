@@ -15,7 +15,9 @@ rules:
           string:
             description: this is a required property in an object new descriotion
             type: string
-        type: object
+        type: 
+          - object
+          - 'null'
         required: true
       object2:
         description: this is a single property
