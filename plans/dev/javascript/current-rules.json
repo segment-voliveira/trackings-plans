@@ -514,7 +514,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "Obj Prop 6 description",
+        "description": "Obj Prop 6",
         "properties": {
           "context": {
             "type": "object"
@@ -537,7 +537,10 @@
                     "type": "string"
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "object2": {
                 "description": "this is a single property",
@@ -560,7 +563,7 @@
         ]
       },
       "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-11T23:45:29.000Z",
+      "updatedAt": "2025-04-16T21:14:35.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
