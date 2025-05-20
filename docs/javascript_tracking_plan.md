@@ -166,6 +166,37 @@ analytics.track("Obj Prop 10", {
 <!-- panels:end -->
 
 
+## Obj Prop 16
+
+<!-- tabs:start -->
+### **Details**
+
+#### **Description**
+
+Obj Prop 6
+#### **Properties**
+
+| **Name** | `Type` | Description | Required? |
+| :--- | :--- | :--- | :--- |
+| **object** | `object,null` | this is a single property | ✅ |
+| **object2** | `object` | this is a single property | ❌ |
+| **object2.string** | `string` | this is a required sub-property in an object dsfa | ❌ |
+#### **JS**
+
+```javascript
+analytics.track("Obj Prop 16", {
+  "object": "<<type: object,null, required: true>>",
+  "object2": {
+    "string": "<<type: string, required: false>>"
+  }
+})
+```
+
+<!-- tabs:end -->
+
+<!-- panels:end -->
+
+
 ## Obj Prop 2
 
 <!-- tabs:start -->
