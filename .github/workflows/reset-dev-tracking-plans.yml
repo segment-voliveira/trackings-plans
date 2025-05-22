@@ -85,7 +85,7 @@ jobs:
       - name: Load Tracking Plans Configuration for Dev Reset
         id: parse_json
         run: |
-          MATRIX=$(jq -c '[.plans[] | {name, dev_secret, prod_path}]' config/tracking-plans-config.json)
+          MATRIX=$(jq -c '[.plans[] | {name, path, dev_secret}]' config/tracking-plans-config.json)
           echo "::set-output name=matrix::$MATRIX"
 
   reset-dev-tracking-plans:
