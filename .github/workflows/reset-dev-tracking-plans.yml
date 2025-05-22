@@ -111,7 +111,7 @@ jobs:
         env:
           SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
           SEGMENT_TRACKING_PLAN_ID: ${{ secrets[matrix.tracking_plan.dev_secret] }}
-          PLAN_DIR: plans/prod/${{ matrix.tracking_plan.prod_path }}
+          PLAN_DIR: plans/prod/${{ matrix.tracking_plan.path }}
         run: |
           echo "Resetting DEV tracking plan for ${{ matrix.tracking_plan.name }}"
           node scripts/reset-tracking-plan.js || echo "No changes detected"
