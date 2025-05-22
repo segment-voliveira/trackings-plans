@@ -260,7 +260,7 @@ async function uploadProdChunks() {
       console.log(`🚀 Uploading ${chunk.length} rules from ${file} (chunk ${i / chunkSize + 1})`);
 
       try {
-        const res = await axios.post(`${baseUrl}/rules`, { rules: chunk }, {
+        const res = await axios.patch(`${baseUrl}/rules`, { rules: chunk }, {
           headers: {
             Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
