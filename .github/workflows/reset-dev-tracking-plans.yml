@@ -29,8 +29,12 @@ jobs:
         tracking_plan: ${{ fromJson(needs.initialize-matrix.outputs.matrix) }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v3
+        with:
+          ref: main
+          fetch-depth: 0  # Important for enabling push
+
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
