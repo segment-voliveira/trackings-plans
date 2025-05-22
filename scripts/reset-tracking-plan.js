@@ -287,6 +287,8 @@ async function main() {
     console.log('📭 No rules to delete.');
   }
 
+  console.log(`🧪 Resolved directory path: ${planDir}`);
+  console.log(`📄 Directory contents: ${fs.existsSync(planDir) ? fs.readdirSync(planDir).join(', ') : 'Directory does not exist'}`);
   console.log('📤 Uploading production rules...');
   await uploadProdChunks();
 
