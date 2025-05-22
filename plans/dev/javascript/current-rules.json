@@ -23,12 +23,12 @@
             "properties": {
               "prop2": {
                 "description": "this is a single property",
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ]
               },
-              "prop3": {
-                "description": "this is a single property",
-                "type": "string"
-              }
+              "prop3": {}
             },
             "required": [
               "prop2",
@@ -40,8 +40,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-09-18T18:40:11.000Z",
-      "updatedAt": "2025-02-18T23:32:09.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -82,8 +82,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-09-06T17:05:15.000Z",
-      "updatedAt": "2025-03-26T18:15:00.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -96,7 +96,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "First Event description 100",
+        "description": "First Event description 10",
         "properties": {
           "context": {
             "type": "object"
@@ -145,8 +145,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-18T23:10:21.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -157,7 +157,7 @@
         "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "labels": {},
-        "description": "Obj Prop hi",
+        "description": "Obj Prop",
         "properties": {
           "context": {
             "type": "object"
@@ -202,8 +202,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-11T23:26:05.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -216,7 +216,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "Obj Prop 10 description hi",
+        "description": "Obj Prop 10",
         "properties": {
           "context": {
             "type": "object"
@@ -261,8 +261,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-11T23:26:05.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -323,8 +323,8 @@
           "properties"
         ]
       },
-      "createdAt": "2025-05-20T23:27:42.000Z",
-      "updatedAt": "2025-05-20T23:27:42.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -385,8 +385,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-03-26T18:10:41.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -399,7 +399,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "Obj Prop 20 description hi",
+        "description": "Obj Prop 20",
         "properties": {
           "context": {
             "type": "object"
@@ -444,8 +444,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T23:50:32.000Z",
-      "updatedAt": "2025-02-11T23:26:05.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -458,7 +458,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "Obj Prop 22 sdf hi",
+        "description": "Obj Prop 22",
         "properties": {
           "context": {
             "type": "object"
@@ -503,8 +503,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-22T19:52:55.000Z",
-      "updatedAt": "2025-02-11T23:26:05.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -562,8 +562,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-14T20:50:32.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -599,10 +599,7 @@
                     "type": "string"
                   }
                 },
-                "type": [
-                  "object",
-                  "null"
-                ]
+                "type": "object"
               },
               "object2": {
                 "description": "this is a single property",
@@ -624,8 +621,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-04-16T21:14:35.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -638,7 +635,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "Second Event hi",
+        "description": "Second Event",
         "properties": {
           "context": {
             "type": "object"
@@ -687,8 +684,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-11T23:26:05.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -715,51 +712,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-11T23:26:05.000Z",
-      "deprecatedAt": "0001-01-01T00:00:00.000Z"
-    },
-    {
-      "key": "Story Event",
-      "type": "TRACK",
-      "version": 1,
-      "jsonSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "type": "object",
-        "labels": {
-          "feature": "journeys"
-        },
-        "properties": {
-          "context": {
-            "type": "object"
-          },
-          "traits": {
-            "type": "object"
-          },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "prop2": {
-                "description": "this is a single property",
-                "type": "string"
-              },
-              "prop3": {
-                "description": "this is a single property hey",
-                "type": "string"
-              }
-            },
-            "required": [
-              "prop2",
-              "prop3"
-            ]
-          }
-        },
-        "required": [
-          "properties"
-        ]
-      },
-      "createdAt": "2025-02-11T21:59:56.000Z",
-      "updatedAt": "2025-02-11T21:59:56.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
@@ -772,7 +726,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "Third Event hi",
+        "description": "Third Event",
         "properties": {
           "context": {
             "type": "object"
@@ -797,8 +751,8 @@
           "properties"
         ]
       },
-      "createdAt": "2024-08-21T21:44:00.000Z",
-      "updatedAt": "2025-02-11T23:26:05.000Z",
+      "createdAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-05-22T19:37:48.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     }
   ]
