@@ -1,3 +1,70 @@
+# name: Reset Dev Tracking Plans
+
+# on:
+#   release:
+#     types: [published]
+
+# jobs:
+#   reset-dev-tracking-plans:
+#     if: contains(github.event.release.name, 'RESET_DEV')
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
+
+#     - name: Set up Node.js
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: '14'
+
+#     - name: Install dependencies
+#       run: npm install
+#     - name: Configure Git identity
+#       run: |
+#         git config --global user.email "you@example.com"
+#         git config --global user.name "Your Name"
+
+#     - name: Fetch main branch
+#       run: git fetch origin main:main
+
+#     - name: Switch to main branch
+#       run: git checkout main
+
+#     - name: Run save script for Server
+#       run: |
+#         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+#         SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
+#         PLAN_DIR=plans/dev/server \
+#         node scripts/save-tracking-plan.js || echo "No changes detected for server"
+
+#     - name: Run save script for JavaScript
+#       run: |
+#         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+#         SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+#         PLAN_DIR=plans/dev/javascript \
+#         node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
+    
+#     - name: Reset Rules In Segment for Javascript
+#       run: |
+#         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+#         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
+#         PLAN_DIR=plans/prod/javascript \
+#         node scripts/reset-tracking-plan.js || echo "No changes detected for JavaScript"
+
+#     - name: Reset Rules In Segment for Server
+#       run: |
+#         SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
+#         SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
+#         PLAN_DIR=plans/prod/server \
+#         node scripts/reset-tracking-plan.js || echo "No changes detected for JavaScript"
+        
+#     - name: Commit and push changes
+#       run: |
+#         git add plans/dev/javascript plans/dev/server
+#         git commit -m "Test markdown generation" || echo "No changes to commit"
+#         git push origin main
+
 name: Reset Dev Tracking Plans
 
 on:
@@ -5,62 +72,46 @@ on:
     types: [published]
 
 jobs:
-  reset-dev-tracking-plans:
+  initialize-matrix:
     if: contains(github.event.release.name, 'RESET_DEV')
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.parse_json.outputs.matrix }}
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
+      - name: Load Tracking Plans Configuration for Dev Reset
+        id: parse_json
+        run: |
+          MATRIX=$(jq -c '[.plans[] | {name, dev_secret, prod_path}]' config/tracking-plans-config.json)
+          echo "::set-output name=matrix::$MATRIX"
 
-    - name: Install dependencies
-      run: npm install
-    - name: Configure Git identity
-      run: |
-        git config --global user.email "you@example.com"
-        git config --global user.name "Your Name"
+  reset-dev-tracking-plans:
+    needs: initialize-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tracking_plan: ${{ fromJson(needs.initialize-matrix.outputs.matrix) }}
 
-    - name: Fetch main branch
-      run: git fetch origin main:main
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Switch to main branch
-      run: git checkout main
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - name: Run save script for Server
-      run: |
-        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
-        SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
-        PLAN_DIR=plans/dev/server \
-        node scripts/save-tracking-plan.js || echo "No changes detected for server"
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run save script for JavaScript
-      run: |
-        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
-        SEGMENT_TRACKING_PLAN_ID=${{ secrets.PROD_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
-        PLAN_DIR=plans/dev/javascript \
-        node scripts/save-tracking-plan.js || echo "No changes detected for JavaScript"
-    
-    - name: Reset Rules In Segment for Javascript
-      run: |
-        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
-        SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_JAVASCRIPT }} \
-        PLAN_DIR=plans/prod/javascript \
-        node scripts/reset-tracking-plan.js || echo "No changes detected for JavaScript"
-
-    - name: Reset Rules In Segment for Server
-      run: |
-        SEGMENT_API_KEY=${{ secrets.SEGMENT_PUBLIC_API_TOKEN }} \
-        SEGMENT_TRACKING_PLAN_ID=${{ secrets.DEV_SEGMENT_TRACKING_PLAN_ID_SERVER }} \
-        PLAN_DIR=plans/prod/server \
-        node scripts/reset-tracking-plan.js || echo "No changes detected for JavaScript"
-        
-    - name: Commit and push changes
-      run: |
-        git add plans/dev/javascript plans/dev/server
-        git commit -m "Test markdown generation" || echo "No changes to commit"
-        git push origin main
+      - name: Reset Dev Tracking Plan Rules from Prod Source
+        env:
+          SEGMENT_API_KEY: ${{ secrets.SEGMENT_PUBLIC_API_TOKEN }}
+          SEGMENT_TRACKING_PLAN_ID: ${{ secrets[matrix.tracking_plan.dev_secret] }}
+          PLAN_DIR: plans/prod/${{ matrix.tracking_plan.prod_path }}
+        run: |
+          echo "Resetting DEV tracking plan for ${{ matrix.tracking_plan.name }}"
+          node scripts/reset-tracking-plan.js || echo "No changes detected"
