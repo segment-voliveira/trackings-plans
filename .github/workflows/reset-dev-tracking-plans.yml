@@ -57,3 +57,12 @@ jobs:
         run: |
           echo "Saving DEV tracking plan for ${{ matrix.tracking_plan.name }}"
           node scripts/save-tracking-plan.js || echo "No changes detected"
+
+      - name: Commit and Push Updated Dev Rules
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git pull origin main  # Ensure we're up to date
+          git add plans/dev/${{ matrix.tracking_plan.path }}/current-rules*.json
+          git commit -m "Update DEV rules for ${{ matrix.tracking_plan.name }} [skip ci]" || echo "No changes to commit"
+          git push origin main
