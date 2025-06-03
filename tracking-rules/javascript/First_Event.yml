@@ -33,5 +33,5 @@ rules:
         description: this is a single test testing
         type: 
           - string
-          - null
+          - 'null'
         required: true
