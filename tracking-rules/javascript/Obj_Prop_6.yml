@@ -1,5 +1,5 @@
 rules:
-  - key: Obj Prop 16
+  - key: Obj Prop 6
     type: TRACK
     description: Obj Prop 6
     version: 1
@@ -15,9 +15,7 @@ rules:
           string:
             description: this is a required property in an object new descriotion
             type: string
-        type: 
-          - object
-          - 'null'
+        type: object
         required: true
       object2:
         description: this is a single property

@@ -1,7 +1,7 @@
 rules:
-  - key: Obj Prop 2
+  - key: Obj Prop 16
     type: TRACK
-    description: Obj Prop 2
+    description: Obj Prop 16
     version: 1
     labels:
       feature: journeys
@@ -11,13 +11,13 @@ rules:
         properties:
           int1:
             description: this should be a new property
-            type:
-              - number
-              - 'null'
+            type: number
           string:
             description: this is a required property in an object new descriotion
             type: string
-        type: object
+        type:
+          - object
+          - 'null'
         required: true
       object2:
         description: this is a single property
