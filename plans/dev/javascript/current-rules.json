@@ -96,7 +96,7 @@
         "labels": {
           "feature": "journeys"
         },
-        "description": "First Event description 10",
+        "description": "First Event",
         "properties": {
           "context": {
             "type": "object"
@@ -132,7 +132,10 @@
               },
               "prop3": {
                 "description": "this is a single test testing",
-                "type": "string"
+                "type": [
+                  "string",
+                  null
+                ]
               }
             },
             "required": [
@@ -146,7 +149,7 @@
         ]
       },
       "createdAt": "2025-05-22T19:37:48.000Z",
-      "updatedAt": "2025-05-22T19:37:48.000Z",
+      "updatedAt": "2025-06-03T18:12:44.000Z",
       "deprecatedAt": "0001-01-01T00:00:00.000Z"
     },
     {
