@@ -62,7 +62,7 @@ analytics.track("Aubrey's Event 1", {
 
 #### **Description**
 
-First Event description 10
+First Event
 #### **Properties**
 
 | **Name** | `Type` | Description | Required? |
@@ -72,7 +72,7 @@ First Event description 10
 | **array_prop22.items.layer1_prop34** | `string` | this is an optional property on any items in the array_prop1  change here | ❌ |
 | **obj_prop1** | `object` | this is required object (i.e. can have nested sub-properties) here here | ✅ |
 | **obj_prop1.sub_prop1** | `array` | here blach | ❌ |
-| **prop3** | `string` | this is a single test testing | ✅ |
+| **prop3** | `string,null` | this is a single test testing | ✅ |
 #### **JS**
 
 ```javascript
@@ -85,7 +85,7 @@ analytics.track("First Event", {
   "obj_prop1": {
     "sub_prop1": "<<type: array, required: false>>"
   },
-  "prop3": "<<type: string, required: true>>"
+  "prop3": "<<type: string,null, required: true>>"
 })
 ```
 
