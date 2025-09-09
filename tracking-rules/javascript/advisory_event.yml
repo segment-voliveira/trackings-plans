@@ -16,5 +16,4 @@ rules:
         description: this is a new description for prop3
         type:
           - string
-      prop3:
         required: false
