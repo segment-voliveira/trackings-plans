@@ -1,0 +1,20 @@
+rules:
+  - key: Advisory SE Roundtable
+    type: TRACK
+    description: Advisory SE Roundtable
+    version: 2
+    labels:
+      feature: journeys
+    properties:
+      prop2:
+        description: this is a single property
+        type:
+          - string
+          - 'null'
+        required: true
+      prop3:
+        description: this is a new description for prop3
+        type:
+          - string
+      prop3:
+        required: false
