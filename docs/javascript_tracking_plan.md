@@ -57,6 +57,34 @@ analytics.track("Advisory SE Roundtable", {
 <!-- panels:end -->
 
 
+## Advisory SE Roundtable For Corey
+
+<!-- tabs:start -->
+### **Details**
+
+#### **Description**
+
+Advisory SE Roundtable
+#### **Properties**
+
+| **Name** | `Type` | Description | Required? |
+| :--- | :--- | :--- | :--- |
+| **prop2** | `string,null` | this is a single property | ✅ |
+| **prop3** | `string` | this is a new description for prop3 | ❌ |
+#### **JS**
+
+```javascript
+analytics.track("Advisory SE Roundtable For Corey", {
+  "prop2": "<<type: string,null, required: true>>",
+  "prop3": "<<type: string, required: false>>"
+})
+```
+
+<!-- tabs:end -->
+
+<!-- panels:end -->
+
+
 ## Aubrey's Event 1
 
 <!-- tabs:start -->
