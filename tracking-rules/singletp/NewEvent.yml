@@ -1,0 +1,12 @@
+rules:
+  - key: Initiate Checkout
+    type: TRACK
+    description: Initiate Checkout
+    version: 1
+    properties:
+      checkout_id:
+        description: this is the checkout id
+        type:
+          - string
+          - null
+        required: true
