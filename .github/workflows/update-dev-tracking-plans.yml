@@ -7,6 +7,7 @@ on:
     paths:
       - 'tracking-rules/javascript/**.yml'
       - 'tracking-rules/server/**.yml'
+      - 'tracking-rules/singletp/**.yml'
 
 jobs:
   initialize-matrix:
