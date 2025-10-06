@@ -1,0 +1,75 @@
+{
+  "rules": [
+    {
+      "key": "Purchase Completed",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "context": {},
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "products": {
+                "description": "",
+                "id": "/properties/properties/properties/products",
+                "items": {
+                  "description": "",
+                  "id": "/properties/properties/properties/products/items",
+                  "isNewProperty": true,
+                  "properties": {
+                    "id": {
+                      "description": "",
+                      "id": "/properties/properties/properties/products/items/properties/id",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "",
+                      "id": "/properties/properties/properties/products/items/properties/price",
+                      "type": "string"
+                    }
+                  },
+                  "required": [],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            }
+          }
+        }
+      },
+      "createdAt": "2025-10-06T14:54:57.000Z",
+      "updatedAt": "2025-10-06T14:54:57.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    },
+    {
+      "key": "Segment Consent Preference Updated",
+      "type": "TRACK",
+      "version": 1,
+      "jsonSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "description": "DO NOT EDIT. Event generated to store end users consent preferences for Unify and Twilio Engage.",
+        "properties": {
+          "context": {
+            "type": "object"
+          },
+          "traits": {
+            "type": "object"
+          },
+          "properties": {
+            "type": "object"
+          }
+        }
+      },
+      "createdAt": "2025-10-06T14:54:57.000Z",
+      "updatedAt": "2025-10-06T14:54:57.000Z",
+      "deprecatedAt": "0001-01-01T00:00:00.000Z"
+    }
+  ]
+}

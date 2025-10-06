@@ -1,0 +1,27 @@
+rules:
+  - key: Purchase Completed
+    type: TRACK
+    description: Purchase Completed
+    version: 1
+    labels: {}
+    properties:
+      products:
+        description: ''
+        id: /properties/properties/properties/products
+        items:
+          description: ''
+          id: /properties/properties/properties/products/items
+          isNewProperty: true
+          properties:
+            id:
+              description: ''
+              id: /properties/properties/properties/products/items/properties/id
+              type: string
+            price:
+              description: ''
+              id: >-
+                /properties/properties/properties/products/items/properties/price
+              type: string
+          required: []
+          type: object
+        type: array

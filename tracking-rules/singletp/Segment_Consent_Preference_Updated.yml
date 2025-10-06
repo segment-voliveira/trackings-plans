@@ -1,0 +1,7 @@
+rules:
+  - key: Segment Consent Preference Updated
+    type: TRACK
+    description: Segment Consent Preference Updated
+    version: 1
+    labels: {}
+    properties: {}
